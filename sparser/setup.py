@@ -8,5 +8,5 @@ setup(
     author='akramer',
     license='GPL',
     packages=['sparser'],
-    install_requires=['BeautifulSoup4',], 
+    install_requires=['BeautifulSoup4',],
 )
