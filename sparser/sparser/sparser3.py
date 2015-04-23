@@ -43,9 +43,11 @@ class URLRetriever(object):
         if (level == 1):
             return set(self.__parseurl__(url))
         # Processing for level 2
+        # Thinking of theading here
         if (level == 2):
             pass
         # Processing for level 3
+        # Thinking of threading here
         if (level == 3):
             pass
         
