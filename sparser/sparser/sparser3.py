@@ -30,7 +30,9 @@ class URLRetriever(object):
             return set(my_list)
 
         except Exception as e:
-            # return None on any error
+            # return None on any error.  However, there should be no errors.
+            # But if there is an error, the URL under processing is ignored.
+            # This manifests iself when processing many urls
             return None
 
     def parseurls(self, url, level=1):
