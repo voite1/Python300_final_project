@@ -45,16 +45,18 @@ class URLRetriever(object):
         # Processing for level 2
         # Thinking of theading here
         if (level == 2):
-            pass
+            level2_list = set(self.__parseurl__(url))
+            print "Level 2", len(level2_list)
         # Processing for level 3
         # Thinking of threading here
         if (level == 3):
-            pass
+            level3_list = set(self.__parseurl__(url))
+            print "Level 3", len(level3_list)
         
 
 if __name__ == "__main__":
     url = 'https://news.google.com'
     obj = URLRetriever()
-    lst = obj.parseurls(url)
+    lst = obj.parseurls(url, 3)
     if lst is not None:
         print len(lst)
