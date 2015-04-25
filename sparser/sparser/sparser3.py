@@ -9,6 +9,7 @@ class URLRetriever(object):
     def __parseurl__(self, url):
         # list to accumulate links from the url
         my_list = []
+        return_list = []
         
         try: 
             # Getting single web page
@@ -27,7 +28,10 @@ class URLRetriever(object):
                 my_list.append(tag['href'])
 
             # return unique list of URLs
-            return set(my_list)
+            for i in my_list:
+                if i.startswith("http"):
+                    return_list.append(i)
+            return set(return_list)
 
         except Exception as e:
             # return None on any error.  However, there should be no errors.
