@@ -32,7 +32,12 @@ def __parseurl__(url):
         for i in my_list:
             if i.startswith("http"):
                 return_list.append(i)
-        return set(return_list)
+
+        # Sorting unique urles
+        return_list = set(return_list)
+        return_list = list(return_list)
+
+        return return_list
 
     except Exception as e:
         # return None on any error.  However, there should be no errors.
@@ -56,7 +61,11 @@ def parseurls(url, level=1, processes=4):
         level2_list2 = Parallel(n_jobs=processes)(delayed(__parseurl__)(i) for i in level2_list)
         level2_list2 = __flattenlist__(level2_list2)
         return_list = __contactnatelists__(level2_list2, level2_list)
-        return set(return_list)
+
+        # Separating unique URL's
+        return_list = set(return_list)
+        return_list = list(return_list)
+        return return_list
 
 # Flattening the list of lists
 def __flattenlist__(lst):
