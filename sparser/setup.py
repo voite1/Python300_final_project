@@ -7,6 +7,6 @@ setup(
     url='https://github.com/voite1/Python300_final_project',
     author='akramer',
     license='GPL',
-    packages=['sparser'],
-    install_requires=['BeautifulSoup4','joblib'],
+    packages=['urlsparser','pagesparser'],
+    install_requires=['BeautifulSoup4','joblib','lxml'],
 )
