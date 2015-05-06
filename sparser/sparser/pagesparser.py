@@ -20,7 +20,7 @@ def __parsepage__(url):
         text = soup.get_text()
     
         # Clean the text from non-ascii chars and punctuation
-        text = asciiextractor(text)
+        text = clean(text)
         return(text)
     except Exception as e:
         # Ignore any exception
