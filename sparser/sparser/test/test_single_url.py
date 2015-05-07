@@ -31,6 +31,6 @@ if __name__ == "__main__":
 	print "wife", my_dict["wife"]
 	print "boeing", my_dict["boeing"]
 
-	filename = datetime.date.today().strftime("%B-%d-%Y")
+	filename = datetime.date.today().strftime("%m-%d-%Y")
 	filename = filename + ".dict.pickle"
         pickle.dump(my_dict, open(filename, "wb"))
