@@ -1,6 +1,7 @@
 from sutil import *
 import urllib
 from bs4 import BeautifulSoup
+from joblib import Parallel, delayed
 
 
 # Function to parse a single URL and return askee text 
@@ -27,16 +28,10 @@ def __parsepage__(url):
         return('')
 
 
-# Function to parse a list of urls
-# Accepts a list of well formed URL's 
-# Returns a single string concatenating clean text retreievd from the list of URL's
-def parsepages(lst):
-    s = ''
-    for url in lst:
-        temp = __parsepage__(url)
-        if temp is not None:
-            s = s + temp
-    return s
+# Function to extract
+def parsepages(lst, processes=4):
+    to_return = Parallel(n_jobs=processes)(delayed(__parsepage__)(i) for i in lst)
+    return to_return
 
 
 if __name__ == "__main__":

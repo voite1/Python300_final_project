@@ -47,10 +47,10 @@ def __parseurl__(url):
 
 def parseurls(url, level=1, processes=4):
     # Work with levels.  Allow up to 2 levels
-    if (level > 2 or level < 1):
+    if (level > 5 or level < 1):
         raise ValueError("\'level\' must have integer values between 1 and 2. Default is 1")
     # Check processes
-    if (processes > 20 or processes < 1):
+    if (processes > 50 or processes < 1):
         raise ValueError("\'processes'\ must have integer values between 1 and 20. Defalt is 4")
     # Processing for level 1
     if (level == 1):
@@ -72,7 +72,8 @@ def __flattenlist__(lst):
     my_list = []
     return_list = []
     for i in lst:
-        my_list.extend(i)
+        if i is not None:
+            my_list.extend(i)
     # Check if url starts with http://
     for j in my_list:
         if j.startswith("http://"):

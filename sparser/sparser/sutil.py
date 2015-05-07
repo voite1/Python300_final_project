@@ -23,7 +23,26 @@ def clean(inString, allowed_list=chars):
     # Remove extra spaces
     temp = re.sub(' +',' ', temp)
 
-    return temp
+    # Convert temp to lower case
+    temp = temp.lower()
+
+    # Create a dictionary to return
+    to_return = {}
+    
+    # Split string
+    tmp_list = temp.split()
+ 
+    # Populate the dictionary to return
+    for word in tmp_list:
+        word = word.strip()
+        if word in to_return:
+            value = to_return[word]
+            to_return[word] = (value + 1)
+        else:
+            to_return[word] = 1
+ 
+    # Return dictionary
+    return to_return
 
 
 # Decorator called sycnronized that uses threading to synchroznise access
@@ -34,18 +53,3 @@ def synchronized(func):
             return func(*args, **kws)
     return synced_func
 
-
-
-if __name__ == "__main__":
-    s = '''A]le.ksey', ; K:@$%^&*rame()_+r 12345     67890
-    asfasdfa
-
-
-    elskey
-
-    *()(70979u685ngobbt978qiuw@!@#$%^&kjkladf)   
-
-
-    Alek;s&ey'''
-    print(s)
-    print(clean(s))
