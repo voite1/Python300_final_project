@@ -2,3 +2,6 @@ v_env
 sparser.egg-info
 *.pyc
 test
+*.txt
+*.pickle
+

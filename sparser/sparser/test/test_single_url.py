@@ -5,14 +5,14 @@ import pickle
 import datetime
 
 if __name__ == "__main__":
-	lst = parseurls("https://news.google.com")
+	lst = parseurls("https://news.google.com", 1)
 	print "URL's", len(lst)
 
 	with open("urls.txt", "wb") as output:
 		for i in lst:
 			output.write(i + "\n")
 
-	result = parsepages(lst)
+	result = parsepages(lst, 50)
 	print "Pages", len(result)
 
 	my_dict = {}

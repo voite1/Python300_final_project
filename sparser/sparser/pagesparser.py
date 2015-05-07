@@ -1,7 +1,8 @@
 from sutil import *
 import urllib
 from bs4 import BeautifulSoup
-from joblib import Parallel, delayed
+#from joblib import Parallel, delayed
+import multiprocessing as mp
 
 
 # Function to parse a single URL and return askee text 
@@ -29,8 +30,10 @@ def __parsepage__(url):
 
 
 # Function to extract
-def parsepages(lst, processes=4):
-    to_return = Parallel(n_jobs=processes)(delayed(__parsepage__)(i) for i in lst)
+def parsepages(lst, procs=4):
+    pool = mp.Pool(processes=procs)
+    results = [pool.apply_async(__parsepage__, args=(x,)) for x in lst]
+    to_return = [p.get() for p in results]
     return to_return
 
 
