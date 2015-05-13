@@ -50,8 +50,8 @@ def parseurls(url, level=1, processes=4):
     if (level > 5 or level < 1):
         raise ValueError("\'level\' must have integer values between 1 and 2. Default is 1")
     # Check processes
-    if (processes > 50 or processes < 1):
-        raise ValueError("\'processes'\ must have integer values between 1 and 20. Defalt is 4")
+    if (processes > 100 or processes < 1):
+        raise ValueError("\'processes'\ must have integer values between 1 and 100. Defalt is 4")
     # Processing for level 1
     if (level == 1):
         return set(__parseurl__(url))

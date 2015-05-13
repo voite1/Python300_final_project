@@ -7,7 +7,7 @@ import pickle
 import datetime
 
 def test():
-    lst = parseurls("https://news.yahoo.com")
+    lst = parseurls("https://news.google.com")
 
 
     pool = mp.Pool(processes=20)
