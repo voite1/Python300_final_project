@@ -5,7 +5,7 @@ import pickle
 import datetime
 
 if __name__ == "__main__":
-	lst = parseurls("https://news.google.com", 2, 8)
+	lst = parseurls("http://news.yahoo.com/", 2, 8)
 	print "URL's", len(lst)
 
 	with open("urls.txt", "wb") as output:
@@ -28,9 +28,9 @@ if __name__ == "__main__":
 	print "the", my_dict["the"]
 	print "over", my_dict["over"]
 	print "children", my_dict["children"]
-	print "wife", my_dict["wife"]
+	print "wife", my_dict["history"]
 	print "boeing", my_dict["boeing"]
 
 	filename = datetime.date.today().strftime("%m-%d-%Y")
 	filename = filename + ".dict.pickle"
-        pickle.dump(my_dict, open(filename, "wb"))
+    pickle.dump(my_dict, open(filename, "wb"))

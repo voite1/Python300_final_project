@@ -12,7 +12,7 @@ def signal_handler(signum, frame):
 # Function to parse a single URL and return askee text 
 # Accepts single well formed URL
 # Returns text representation of a url cleand from non-ascii chars and punctuation
-def __parsepage__(url, timeout=2):
+def __parsepage__(url, timeout=30):
 
     try:
         # Setting up timeout for each call
@@ -44,6 +44,7 @@ def parsepages(lst, procs=4):
     results = [pool.apply_async(__parsepage__, args=(x, )) for x in lst]
     to_return = [p.get() for p in results]
     return to_return
+
 
 
 if __name__ == "__main__":
