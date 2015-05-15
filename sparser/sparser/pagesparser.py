@@ -6,7 +6,11 @@ import signal
 
 # Function to call when call times out
 def signal_handler(signum, frame):
-    raise Exception("Timed out!")
+    try:
+        raise Exception("Timed out!")
+    except Exception as e:
+        # Silencing the error
+        pass
 
 
 # Function to parse a single URL and return askee text 
