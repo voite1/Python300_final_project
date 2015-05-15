@@ -1,6 +1,5 @@
 v_env
 test_test
-extra
 sparser.egg-info
 *.pyc
 *.txt
