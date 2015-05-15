@@ -6,8 +6,6 @@ import string
 # character sets allowed in the string
 chars = string.ascii_letters + string.digits + string.whitespace + string.punctuation
 
-
-
 # Function to strip all but ascii letters, digits, and whitespace
 def clean(inString, allowed_list=chars):
     # Isolate ascii chars only
@@ -52,4 +50,17 @@ def synchronized(func):
         with func.__lock__:
             return func(*args, **kws)
     return synced_func
+
+# merging list of dictionaries
+def mergedicts(lst):
+    my_dict = {}
+
+    for dict_in_list in lst:
+        for i in dict_in_list:
+            if i in my_dict:
+                value = my_dict[i]
+                my_dict[i] = (value + dict_in_list[i])
+            else:
+                my_dict[i] = dict_in_list[i]
+    return my_dict
 
