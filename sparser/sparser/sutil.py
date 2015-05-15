@@ -9,7 +9,7 @@ chars = string.ascii_letters + string.digits + string.whitespace + string.punctu
 # Function to strip all but ascii letters, digits, and whitespace
 def clean(inString, allowed_list=chars):
     # Isolate ascii chars only
-    temp = "".join([ch for ch in inString if ch in allowed_list])
+    temp = ''.join([i if ord(i) < 128 else ' ' for i in inString])
     
     # Remove punctuation. # make sure to use str() to get rid of unicode
     replace_punctuation = string.maketrans(string.punctuation, ' ' * len(string.punctuation))
