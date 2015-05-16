@@ -6,8 +6,13 @@ from joblib import Parallel, delayed
 from sutil import *
 
 
-
+# Extracts visible text from the web page pointed to by the
+# URL passed in as a parameter and returns a dictionay of word counts.
 def __parseurl__(url):
+    '''
+       Reterns dictionary of the word counts from the page pointed to by
+       the URL passed in as a parameter *url*.
+    '''
     # list to accumulate links from the url
     my_list = []
     return_list = []
@@ -45,7 +50,15 @@ def __parseurl__(url):
         # This manifests iself when processing many urls
         return None
 
+
+# Parses a list of URLs passed in as a paramter and returns
+# a list of dictionaries containing word counts from the associated pages.
 def parseurls(url, level=1, processes=4):
+    '''
+        Returns a list of word count dictionaries from the list of URL's passed in
+        as *url*.  Optional *level=1* and *processes=4* specify how deep to recurse
+        and how many processes to spawn.
+    '''
     # Work with levels.  Allow up to 2 levels
     if (level > 5 or level < 1):
         raise ValueError("\'level\' must have integer values between 1 and 2. Default is 1")
@@ -67,8 +80,13 @@ def parseurls(url, level=1, processes=4):
         return_list = list(return_list)
         return return_list
 
+
 # Flattening the list of lists
 def __flattenlist__(lst):
+    '''
+        Returns a single set containg a unique list of dictionaries built from
+        the list of lists of dictionaries.
+    '''
     my_list = []
     return_list = []
     for i in lst:
@@ -81,7 +99,13 @@ def __flattenlist__(lst):
     # Returning concatenanted list
     return set(return_list)
 
+
+# Concatenanes two lists checking for spaces and new line characters
+# that may be in the urls
 def __contactnatelists__(list1, list2):
+    '''
+        Concatenates two lists of urls and returns a set of unique URLs
+    '''
     my_list = []
     # Check if there are no new line or spaces in both lists
     for i in list1:
@@ -99,10 +123,15 @@ def __contactnatelists__(list1, list2):
     return my_list
 
 
+# Checks if the string has any non-ascii characters
 def __is_ascii__(s):
+    '''
+        Checks if a string has a non-ascii charaters 
+    '''
     return all(ord(c) < 128 for c in s)
         
 
+# code used to test this file
 if __name__ == "__main__":
     url = 'https://news.google.com'
     lst = parseurls(url, 2, 20)

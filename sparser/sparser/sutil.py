@@ -6,8 +6,15 @@ import string
 # character sets allowed in the string
 chars = string.ascii_letters + string.digits + string.whitespace + string.punctuation
 
+
 # Function to strip all but ascii letters, digits, and whitespace
 def clean(inString, allowed_list=chars):
+    '''
+        Cleans string passed in as a parameter from non-ascii characters,
+        punctuation, blank lines, nultiple spaces, and converts all the
+        words in the string to lower case. Returns a dictionary of 
+        word counts in the string.
+    '''
     # Isolate ascii chars only
     temp = ''.join([i if ord(i) < 128 else ' ' for i in inString])
     
@@ -45,14 +52,23 @@ def clean(inString, allowed_list=chars):
 
 # Decorator called sycnronized that uses threading to synchroznise access
 def synchronized(func):
+    '''
+        Decorator used to synchronized methods. Not used in this package, but
+        is available to use if needed. May be removed in later release.
+    '''
     func.__lock__ = threading.Lock()
     def synced_func(*args, **kws):
         with func.__lock__:
             return func(*args, **kws)
     return synced_func
 
+
 # merging list of dictionaries
 def mergedicts(lst):
+    '''
+        Merges a list of dictionaries into a single dictionary and
+        returns newly constructed dictionary.
+    '''
     my_dict = {}
 
     for dict_in_list in lst:
