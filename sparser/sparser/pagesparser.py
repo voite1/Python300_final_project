@@ -18,7 +18,7 @@ def signal_handler(signum, frame):
 # Function to parse a single URL and return askee text 
 # Accepts single well formed URL
 # Returns text representation of a url cleand from non-ascii chars and punctuation
-def __parsepage__(url, timeout=30):
+def __parsepage__(url, timeout=7):
     '''
         Accepts a url and returns a dictionary containing word count of
         words contained in the page pointed by the url passed in as
