@@ -1,7 +1,7 @@
-from sparser.urlsparser import parseurls
-from sparser.pagesparser import parsepages
-from sparser.sutil import mergedicts
-from sparser.test.selftest import runtests
+from sparser.urlsparser import *
+from sparser.pagesparser import *
+from sparser.sutil import *
+from sparser.test.selftest import *
 
 # Getting list of URL's from the entry url 
 def geturls(url, level=1, threads=4):

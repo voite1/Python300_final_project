@@ -1,36 +1,21 @@
 from sutil import *
-import urllib
+import urllib2
 from bs4 import BeautifulSoup
 import multiprocessing as mp
-import signal
-
-# Function to call when call times out
-def signal_handler(signum, frame):
-    '''
-        Used a signal handler for the processes to terminate the 
-        process ad predefined interval.
-    '''
-    # Completely ingore anythin here.  This is a simple callback
-    # function for signal hadler
-    pass
 
 
 # Function to parse a single URL and return askee text 
 # Accepts single well formed URL
 # Returns text representation of a url cleand from non-ascii chars and punctuation
-def __parsepage__(url, timeout=7):
+def __parsepage__(url, timeout=20):
     '''
         Accepts a url and returns a dictionary containing word count of
         words contained in the page pointed by the url passed in as
         a parameter to this function.
     '''
     try:
-        # Setting up timeout for each call
-        signal.signal(signal.SIGALRM, signal_handler)
-        signal.alarm(timeout)
-
-	    # Read url and loade url in teh BeautifulSoup
-        html = urllib.urlopen(url).read()
+        # Read url and loade url in teh BeautifulSoup
+        html = urllib2.urlopen(url, timeout=timeout).read()
         soup = BeautifulSoup(html)
     
         # delete <script> and <style> tags
@@ -60,15 +45,6 @@ def parsepages(lst, procs=4):
     to_return = [p.get() for p in results]
     return to_return
 
-
-# Function to test code on this page
-if __name__ == "__main__":
-    lst = ['https://news.google.com', 'https://news.yahoo.com','http://www.msn.com', 'http://finance.google.com']
-    page_text = parsepages(lst)
-    print len(page_text)
-    print "Length"
-    for i in page_text:
-        print i
     
     
 

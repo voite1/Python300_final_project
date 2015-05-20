@@ -50,19 +50,6 @@ def clean(inString, allowed_list=chars):
     return to_return
 
 
-# Decorator called sycnronized that uses threading to synchroznise access
-def synchronized(func):
-    '''
-        Decorator used to synchronized methods. Not used in this package, but
-        is available to use if needed. May be removed in later release.
-    '''
-    func.__lock__ = threading.Lock()
-    def synced_func(*args, **kws):
-        with func.__lock__:
-            return func(*args, **kws)
-    return synced_func
-
-
 # merging list of dictionaries
 def mergedicts(lst):
     '''

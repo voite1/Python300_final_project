@@ -129,20 +129,3 @@ def __is_ascii__(s):
         Checks if a string has a non-ascii charaters 
     '''
     return all(ord(c) < 128 for c in s)
-        
-
-# code used to test this file
-if __name__ == "__main__":
-    url = 'https://news.google.com'
-    lst = parseurls(url, 2, 20)
-    print len(lst)
-    with open('urls.txt', 'w') as output:
-        for i in lst:
-            output.write(i + "\n")
-    
-    lines = []
-    with open('urls.txt', 'rb') as inp:
-        lines = inp.readlines()
-
-    print len(lines)
-    print "Done!!!"
