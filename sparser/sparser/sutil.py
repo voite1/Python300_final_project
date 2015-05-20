@@ -8,7 +8,7 @@ chars = string.ascii_letters + string.digits + string.whitespace + string.punctu
 
 
 # Function to strip all but ascii letters, digits, and whitespace
-def clean(inString, allowed_list=chars):
+def _clean(inString, allowed_list=chars):
     '''
         Cleans string passed in as a parameter from non-ascii characters,
         punctuation, blank lines, nultiple spaces, and converts all the
@@ -51,7 +51,7 @@ def clean(inString, allowed_list=chars):
 
 
 # merging list of dictionaries
-def mergedicts(lst):
+def _mergedicts(lst):
     '''
         Merges a list of dictionaries into a single dictionary and
         returns newly constructed dictionary.

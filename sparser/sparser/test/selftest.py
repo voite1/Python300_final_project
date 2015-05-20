@@ -31,7 +31,7 @@ def suite():
     return suite
 
 
-def runtests():
+def _runtests():
     runner = unittest.TextTestRunner()
     test_suite = suite()
     runner.run(test_suite)
