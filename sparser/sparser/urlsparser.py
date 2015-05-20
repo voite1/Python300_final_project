@@ -94,7 +94,7 @@ def __flattenlist__(lst):
             my_list.extend(i)
     # Check if url starts with http://
     for j in my_list:
-        if j.startswith("http://"):
+        if j.startswith("http"):
             return_list.append(j.strip())
     # Returning concatenanted list
     return set(return_list)
