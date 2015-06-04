@@ -1,4 +1,5 @@
 from sutil import _clean
+from sutil import _mergedicts
 import urllib2
 from bs4 import BeautifulSoup
 import multiprocessing as mp
@@ -53,6 +54,9 @@ def _parsepages(lst, procs=4):
 
     # Create a list of dictionaries to return
     to_return = [p.get() for p in results]
+
+    # Merge the list of dictionaries
+    to_return = _mergedicts(to_return)
 
     # Return the list of dictionaries
     return to_return
